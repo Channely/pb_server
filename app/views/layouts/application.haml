@@ -1,12 +1,18 @@
 !!!
 %html
   %head
-    %title
-      PbServer
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %title= content_for?(:title) ? yield(:title) : "Pb Server"
+    %meta{:content => content_for?(:description) ? yield(:description) : "Pb Server", :name => "description"}
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-
-    = yield
-
+    %header
+      = render 'layouts/navigation'
+    %main{:role => "main"}
+      = render 'layouts/messages'
+      = yield
+    %footer
+      %p.text-center
+        Copyright ©2013 agoagirl.com All Rights Reserved. 京ICP备********号

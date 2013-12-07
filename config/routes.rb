@@ -1,5 +1,9 @@
 PbServer::Application.routes.draw do
-  get "user/sign_up"
+
+  root 'navigates#home'
+  get 'navigates/home'
+  resources 'users'
+  #get "users/new"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

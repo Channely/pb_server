@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class UserControllerTest < ActionController::TestCase
-  test "should get sign_up" do
-    get :sign_up
+  test "should get new" do
+    get :new
     assert_response :success
   end
 

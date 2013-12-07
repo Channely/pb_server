@@ -1,0 +1,43 @@
+%h1.form-centered Sign Up
+.span8
+  %form.form-horizontal
+    %fieldset
+      .form-group.has-success
+        %label.col-sm-2.control-label( for="inputPassword") Password
+        .col-sm-7
+          %input.form-control#inputPassword( type="password"  placeholder="Password")
+-#=form_for :sign_in_data, url: users_path, method: :post do |f|
+-#  - if @user.errors.any?
+-#    #error_explanation
+-#      %h2
+-#        = pluralize(@user.errors.count, "error")
+-#        prohibited this user from being saved:
+-#      %ul
+-#        - @user.errors.full_messages.each do |msg|
+-#          %li= msg
+-#  %p
+-#    =f.label :username, '昵称'
+-#    %br
+-#      =f.text_field :username
+-#  %p
+-#    =f.label :email, '邮箱'
+-#    %br
+-#      =f.email_field :email
+-#  %p
+-#    =f.label :password, '密码'
+-#    %br
+-#      =f.password_field :password
+-#  %p
+-#    =f.label :confirm_password, '确认密码'
+-#    %br
+-#      =f.password_field :confirm_password
+-#  %p
+-#    =f.label :question, '密保问题'
+-#    %br
+-#      =f.text_field :question
+-#  %p
+-#    =f.label :answer, '密保答案'
+-#    %br
+-#      =f.text_field :answer
+-#  %p
+-#    =f.submit '注册'
