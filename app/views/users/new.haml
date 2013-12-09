@@ -1,43 +1,46 @@
-%h1.form-centered Sign Up
-.span8
-  %form.form-horizontal
-    %fieldset
-      .form-group.has-success
-        %label.col-sm-2.control-label( for="inputPassword") Password
-        .col-sm-7
-          %input.form-control#inputPassword( type="password"  placeholder="Password")
--#=form_for :sign_in_data, url: users_path, method: :post do |f|
--#  - if @user.errors.any?
--#    #error_explanation
--#      %h2
--#        = pluralize(@user.errors.count, "error")
--#        prohibited this user from being saved:
--#      %ul
--#        - @user.errors.full_messages.each do |msg|
--#          %li= msg
--#  %p
--#    =f.label :username, '昵称'
--#    %br
--#      =f.text_field :username
--#  %p
--#    =f.label :email, '邮箱'
--#    %br
--#      =f.email_field :email
--#  %p
--#    =f.label :password, '密码'
--#    %br
--#      =f.password_field :password
--#  %p
--#    =f.label :confirm_password, '确认密码'
--#    %br
--#      =f.password_field :confirm_password
--#  %p
--#    =f.label :question, '密保问题'
--#    %br
--#      =f.text_field :question
--#  %p
--#    =f.label :answer, '密保答案'
--#    %br
--#      =f.text_field :answer
--#  %p
--#    =f.submit '注册'
+
+.container
+  .row.row-offcanvas.row-offcanvas-right
+    .col-xs-12.col-sm-9
+      %h1.text-success 注 册
+      .span8
+        %form.form-horizontal
+          =form_for :sign_up_data, url: users_path, method: :post do |f|
+            - if @user.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@user.errors.count, "error")
+                  prohibited this user from being saved:
+                %ul
+                  - @user.errors.full_messages.each do |msg|
+                    %li= msg
+            %fieldset
+              .form-group.has-success
+                =f.label :username, '昵 称 ：', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.text_field :username, class: 'form-control', type: 'text', placeholder: '昵称'
+              .form-group.has-success
+                =f.label :email, '邮 箱 ：', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.email_field :email, class: 'form-control', type: 'email', placeholder: '邮箱'
+              .form-group.has-success
+                =f.label :password, '密 码 ：', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.password_field :password, class: 'form-control', type: 'password', placeholder: '密码'
+              .form-group.has-success
+                =f.label :confirm_password, '确认密码:', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.password_field :confirm_password, class: 'form-control', type: 'password', placeholder: '确认密码'
+              .form-group.has-success
+                =f.label :question, '密保问题:', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.text_field :question, class: 'form-control', type: 'text', placeholder: '密保问题'
+              .form-group.has-success
+                =f.label :answer, '密保答案:', class: 'col-sm-7 control-label'
+                .col-sm-5
+                  =f.text_field :answer, class: 'form-control', type: 'text', placeholder: '密保答案'
+              %hr
+              .col-sm-3.col-sm-offset-6
+                %button.btn.btn-warning.btn-lg.btn-block 重 置
+              .form-actions.col-sm-3
+                =f.submit ' 确 认 ', class: 'btn btn-success btn-lg btn-block'
