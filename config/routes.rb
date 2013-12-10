@@ -1,11 +1,17 @@
 PbServer::Application.routes.draw do
 
+
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
   root 'navigates#home'
-  get 'navigates/home'
-  resources 'users'
-  post "users/sign_in", as: 'sign_in'
-  match "signup",   to: 'users#new',     via: 'get'
-  match "signin",   to: 'users#check',   via: 'get'
+
+  match "signup",   to: 'users#new',        via: 'get'
+  match "signin",   to: 'sessions#new',     via: 'get'
+  match "signout",  to: 'sessions#destroy', via: 'delete'
+
+
+
   #get "users/new"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
