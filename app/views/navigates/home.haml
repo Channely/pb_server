@@ -23,4 +23,20 @@
           %p.pull-right
             %a.btn.btn-info( href="#" role="button") 详情 »
     -#%img.img-circle.img-responsive.pull-right( alt="")
-    %div(style="margin-right:-10%" )=image_tag 'activity.png'
+    - if signed_in?
+      %div(style="margin-right:-10%" )=image_tag 'activity-I.png'
+    - else
+      %hr
+      %hr
+      %hr
+      %hr
+      %hr
+      .col-sm-2.col-sm-offset-1
+        = link_to '注 册', signup_path, class: 'btn btn-lg btn-block btn-primary'
+        %hr
+        %hr
+        %hr
+        %hr
+        %hr
+        %div(style="margin-right:-10%" )=image_tag 'activity-U.png'
+
