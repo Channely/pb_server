@@ -1,7 +1,8 @@
 %li= link_to '主页', root_path, class: 'navbar-brand'
 %li= link_to '帮助', '#', class: 'navbar-brand'
 - if signed_in?
-  %li= link_to "所有用户", '#', class: 'navbar-brand'
+  - if admin?
+    %li= link_to "所有用户", users_path, method: 'get', class: 'navbar-brand'
   .navbar-brand
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       %b.caret
