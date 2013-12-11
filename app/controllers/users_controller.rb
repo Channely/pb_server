@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user_or_admin, only: [:edit, :update]
+  before_action :correct_user,            only: [:edit, :update]
+  before_action :is_admin,                only: :index
+
   def new
     @user = User.new
   end
@@ -15,18 +19,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
-    #params[:user][:email] = @user[:email]
     if @user.update_attributes(user_update_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      unless admin?
+        redirect_to @user
+      else
+        redirect_to users_path
+      end
     else
       render 'edit'
     end
+  end
+
+  def index
+    @users = User.all
   end
 
   def show
@@ -43,4 +53,21 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :password, :question, :answer, :password_confirmation)
     end
 
+    def signed_in_user_or_admin
+      unless signed_in? || admin?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user) || admin?
+    end
+
+    def is_admin
+      unless admin?
+        redirect_to root_path, notice: "Sorry,You aren't admin."
+      end
+    end
 end
