@@ -10,15 +10,17 @@
         %td 密 码
         %td 密保问题
         %td 密保答案
-        %td.danger 操作
+        %td.danger.text-center(colspan="2") 操作
       - @users.each do |user|
         %tr.warning
           %td=user.id
           %td=user.name
           %td=user.email
-          %td=user.password
-          %td=user.question
-          %td=user.answer
+          %td *******
+          %td *******
+          %td *******
           %td= link_to '修改', edit_user_path(user), class: 'btn btn-block'
-
+          %td
+            - if admin? && !current_user?(user)
+              = link_to '删除', user, method: :delete, data: { confirm: "确认删除?" }, class: 'btn btn-block'
 

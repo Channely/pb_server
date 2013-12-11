@@ -33,7 +33,6 @@ group :doc do
 end
 
 gem 'haml'
-
 gem 'bootstrap-sass'
 
 group :development do
