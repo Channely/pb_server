@@ -1,5 +1,5 @@
 class NavigatesController < ApplicationController
+  include SessionsHelper
   def home
   end
-  # To change this template use File | Settings | File Templates.
 end

@@ -8,7 +8,7 @@
       我的帐户
     %ul.dropdown-menu
       %li= link_to "帐户资料 ", root_path
-      %li= link_to "设置", '#'
+      %li= link_to "设置", edit_user_path(current_user)
       %li.divider
       %li= link_to "退出登录", signout_path, method: "delete"
 - else
