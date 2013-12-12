@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user_or_admin, only: [:edit, :update]
-  before_action :correct_user,            only: [:edit, :update]
+  before_action :signed_in_user_or_admin, only: [:edit, :update, :show]
+  before_action :correct_user,            only: [:edit, :update, :show]
   before_action :admin_user,              only: [:index, :destroy]
 
   def new
@@ -10,9 +10,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in @user
-      flash[:success] = 'welcome!'
-      redirect_to @user
+      unless admin?
+        sign_in @user
+        flash[:success] = "Welcome "+@user.name+", pleasure for your using!"
+        #"欢迎尊敬的"+@user.name+"来到活动通，祝您使用愉快。"
+        redirect_to @user
+      else
+        flash[:success] = "The user "+@user.name+" create successful!"
+        redirect_to users_path
+      end
     else
       render 'new'
     end
