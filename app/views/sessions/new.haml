@@ -23,4 +23,10 @@
                 .form-actions.col-sm-3.col-sm-offset-6
                   =f.submit ' 确 认 ', class: 'btn btn-success btn-lg btn-block'
                 .col-sm-3
-                  =link_to '忘记密码', root_path, class:'btn btn-warning btn-lg btn-block'
+                  =f.submit '忘记密码', class:'btn btn-warning btn-lg btn-block'
+      .form-actions.col-sm-2.col-sm-offset-6
+        %hr
+        %br
+        %p
+          游客？
+          = link_to "马上注册！", signup_path
