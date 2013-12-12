@@ -8,6 +8,10 @@
             =form_for :user, url: user_path, method: :patch do |f|
               %fieldset
                 .form-group.has-success
+                  .col-sm-5.col-sm-offset-7
+                    %a{:href => "http://gravatar.com/emails"}
+                      = gravatar_for @user
+                .form-group.has-success
                   =f.label :name, '昵 称 ：', class: 'col-sm-7 control-label'
                   .col-sm-5
                     =f.text_field :name, class: 'form-control', type: 'text', placeholder: '昵称'
@@ -18,11 +22,11 @@
                 .form-group.has-success
                   =f.label :password, '密 码 ：', class: 'col-sm-7 control-label'
                   .col-sm-5
-                    =f.password_field :password, class: 'form-control', type: 'password', placeholder: '密码'
+                    =f.password_field :password, class: 'form-control', type: 'password', placeholder: '至少6位'
                 .form-group.has-success
                   =f.label :password_confirmation, '确认密码:', class: 'col-sm-7 control-label'
                   .col-sm-5
-                    =f.password_field :password_confirmation, class: 'form-control', type: 'password', placeholder: '确认密码'
+                    =f.password_field :password_confirmation, class: 'form-control', type: 'password', placeholder: '密码'
                 .form-group.has-success
                   =f.label :question, '密保问题:', class: 'col-sm-7 control-label'
                   .col-sm-5
@@ -31,7 +35,7 @@
                   =f.label :answer, '密保答案:', class: 'col-sm-7 control-label'
                   .col-sm-5
                     =f.text_field :answer, class: 'form-control', type: 'text', placeholder: '密保答案'
-                %hr
                 .form-actions.col-sm-3.col-sm-offset-8
+                  %br
                   =f.submit ' 修 改 ', class: 'btn btn-warning btn-lg btn-block'
-                =render 'shared/error_messages'
+                .col-sm-5=render 'shared/error_messages'
