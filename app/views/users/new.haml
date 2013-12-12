@@ -2,7 +2,11 @@
   .container
     .row.row-offcanvas.row-offcanvas-right
       .col-xs-12.col-sm-9
-        %h1.text-success 注 册
+        %h1.text-success
+          - unless admin?
+            注 册
+          - else
+            新增用户
         .span8
           .form-horizontal
             =form_for :user, url: users_path, method: :post do |f|
