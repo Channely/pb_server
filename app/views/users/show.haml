@@ -1,10 +1,8 @@
 %div(style="min-height:520px" )
-  %br
-  %br
-  %br
-  %br
-  %br
-  %h1.text-success.text-center
-    欢迎尊敬的
-    =@user.name
-    来到活动通，祝您使用愉快。
+  .row
+    .col-sm-1.col-sm-offset-1
+      %section
+        %h3
+          = gravatar_for @user
+          =@user.name
+
