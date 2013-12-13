@@ -12,11 +12,10 @@ class UsersController < ApplicationController
     if @user.save
       unless admin?
         sign_in @user
-        flash[:success] = "Welcome "+@user.name+", pleasure for your using!"
-        #"欢迎尊敬的"+@user.name+"来到活动通，祝您使用愉快。"
+        flash[:success] = "欢迎尊敬的"+@user.name+"来到活动通，祝您使用愉快。"
         redirect_to @user
       else
-        flash[:success] = "The user "+@user.name+" create successful!"
+        flash[:success] = "用户"+@user.name+"创建成功!"
         redirect_to users_path
       end
     else
@@ -30,7 +29,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_update_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "资料已更新."
       unless admin?
         redirect_to @user
       else
@@ -42,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.sort
   end
 
   def show
@@ -51,7 +50,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:success] = "用户已删除."
     redirect_to users_url
   end
 
