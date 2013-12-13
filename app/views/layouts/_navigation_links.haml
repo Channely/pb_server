@@ -1,9 +1,9 @@
-%li= link_to '主页', root_path, class: 'navbar-brand'
-%li= link_to '帮助', help_path, class: 'navbar-brand'
+%li= link_to '主页', root_path
+%li= link_to '帮助', help_path
 - if signed_in?
   - if admin?
-    %li= link_to "所有用户", users_path, method: 'get', class: 'navbar-brand'
-  .navbar-brand
+    %li= link_to "所有用户", users_path, method: 'get'
+  %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
       %b.caret
       我的帐户
@@ -13,4 +13,4 @@
       %li.divider
       %li= link_to "退出登录", signout_path, method: "delete"
 - else
-  %li= link_to '登录', signin_path, class: 'navbar-brand'
+  %li= link_to '登录', signin_path
