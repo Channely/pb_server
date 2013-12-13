@@ -1,28 +1,15 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
+Write by ccy,20131213211100.pleasure for your using!
 * Ruby version
+	2.0.0-p247
+* Rails version
+	4.0
 
-* System dependencies
+* After you clone this project to your local-system,you nedd:
+	$ cd pb_server
+	$ bundle install
+	$ rake db:migrate
+	$ rails start
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+	# The man who sgin up as first user,he's the admin. 
 
 * ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
